@@ -1,12 +1,10 @@
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-.App {
-  text-align: left;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* Global Styles */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -15,23 +13,17 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: #F5F0EDBF;
+  color: #2E3139;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
 }
 
-/* Reduced motion for accessibility */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
+.App {
+  min-height: 100vh;
+  text-align: left;
 }
 
 /* Custom Scrollbar */
@@ -44,12 +36,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #6D4432;
+  background: #AD806B;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #AD806B;
+  background: #6D4432;
 }
 
 /* Selection Styles */
@@ -63,13 +55,71 @@ body {
   color: white;
 }
 
-/* Focus Styles */
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 2px solid #6D4432;
-  outline-offset: 2px;
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;  
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Glass morphism helper */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #6D4432 0%, #AD806B 50%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Text Gradient Animation */
+.text-gradient {
+  background: linear-gradient(-45deg, #6D4432, #AD806B, #6D4432, #AD806B);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animation for floating elements */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 /* Loading Skeleton Styles */
@@ -88,12 +138,20 @@ textarea:focus {
   }
 }
 
-/* Glass Morphism Effect */
-.glass {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+/* Custom focus styles */
+input:focus, 
+button:focus, 
+select:focus, 
+textarea:focus {
+  outline: 2px solid #6D4432;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(173, 128, 107, 0.3);
+}
+
+/* Smooth transitions for all interactive elements */
+button, 
+.interactive {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Image Loading Animation */
@@ -130,28 +188,6 @@ img[loading="lazy"].loaded {
   left: 100%;
 }
 
-/* Text Gradient Animation */
-.text-gradient {
-  background: linear-gradient(-45deg, #6D4432, #AD806B, #6D4432, #AD806B);
-  background-size: 400% 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient 3s ease infinite;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 /* Card Hover Effects */
 .card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -178,7 +214,7 @@ img[loading="lazy"].loaded {
 
 /* Typography Enhancement */
 .text-hero {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
   line-height: 1.1;
   font-weight: 800;
 }
@@ -189,34 +225,90 @@ img[loading="lazy"].loaded {
   font-weight: 700;
 }
 
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .text-hero {
-    font-size: 2.5rem;
-  }
-  
-  .text-section {
-    font-size: 2rem;
-  }
+.text-section-hero {
+  font-size: clamp(1.8rem, 3.5vw, 2rem);
+  line-height: 1.1;
+  font-weight: 700;
 }
 
-/* Accessibility Improvements */
+/* Custom Color Classes */
+.bg-ambio-earth {
+  background-color: #6D4432;
+}
+
+.bg-ambio-warm {
+  background-color: #AD806B;
+}
+
+.text-ambio-authority {
+  color: #2E3139;
+}
+
+.text-ambio-guide {
+  color: #6B7280;
+}
+
+.text-ambio-earth {
+  color: #6D4432;
+}
+
+.bg-success-glow {
+  background-color: #10B981;
+}
+
+.bg-trust-deep {
+  background-color: #3B82F6;
+}
+
+.text-excitement-pop {
+  color: #F59E0B;
+}
+
+/* Container Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
+  *, 
+  *::before, 
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+  
   .animate-float,
   .animate-pulse-glow,
   .animate-slide-up,
-  .animate-fade-in {
+  .animate-fade-in,
+  .text-gradient {
     animation: none;
   }
 }
 
-/* High Contrast Mode */
+/* High contrast mode support */
 @media (prefers-contrast: high) {
+  .bg-ambio-warm {
+    background-color: #8B4513;
+  }
+  
+  .bg-ambio-earth {
+    background-color: #5D4E37;
+  }
+  
+  .text-ambio-guide {
+    color: #333333;
+  }
+  
   .text-muted {
     color: #000;
   }
@@ -225,3 +317,38 @@ img[loading="lazy"].loaded {
     background-color: #fff;
   }
 }
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .text-hero {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+  
+  .text-section {
+    font-size: 2rem;
+  }
+  
+  .text-section-hero {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .no-print {
+    display: none;
+  }
+}
+
