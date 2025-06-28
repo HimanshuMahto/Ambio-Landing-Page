@@ -61,7 +61,7 @@ const HeroSection = () => {
           className="space-y-8"
         >
           {/* Enhanced Logo */}
-          <motion.div variants={itemVariants} className="flex items-center space-x-4">
+          {/* <motion.div variants={itemVariants} className="flex items-center space-x-4">
             <div className="relative">
               <div className="w-16 h-16 bg-gradient-to-br from-amber-700 to-amber-600 rounded-2xl flex items-center justify-center shadow-xl">
                 <span className="text-white font-bold text-2xl">A</span>
@@ -72,10 +72,10 @@ const HeroSection = () => {
               <span className="text-3xl font-bold text-ambio-authority tracking-tight">AMBIO</span>
               <p className="text-sm text-ambio-guide font-medium -mt-1">Interior Design Excellence</p>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Enhanced Pre-headline */}
-          <motion.div variants={itemVariants} className="flex items-center space-x-3">
+          {/* <motion.div variants={itemVariants} className="flex items-center space-x-3">
             <div className="flex -space-x-1">
               {[1,2,3].map(i => (
                 <div key={i} className="w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full border-2 border-white shadow-sm"></div>
@@ -84,7 +84,7 @@ const HeroSection = () => {
             <p className="text-ambio-guide font-semibold">
               Join <span className="text-ambio-earth font-bold">15,000+</span> Indians who refused to compromise
             </p>
-          </motion.div>
+          </motion.div> */}
 
           {/* Enhanced Main Headline */}
           <motion.h1 

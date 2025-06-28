@@ -351,4 +351,40 @@ img[loading="lazy"].loaded {
     display: none;
   }
 }
+/* Custom utility classes (copied from Tailwind-style naming) */
+.bg-ambio-earth {
+  background-color: #6D4432;
+}
+.bg-ambio-warm {
+  background-color: #AD806B;
+}
+.from-ambio-warm {
+  --tw-gradient-from: #AD806B;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(173 128 107 / 0));
+}
+.to-excitement-pop {
+  --tw-gradient-to: #F59E0B;
+}
+.text-ambio-authority {
+  color: #2E3139;
+}
+.text-ambio-guide {
+  color: #6B7280;
+}
+.from-trust-deep {
+  --tw-gradient-from: #3B82F6;
+}
+.to-success-glow {
+  --tw-gradient-to: #10B981;
+}
+.from-ambio-earth {
+  --tw-gradient-from: #6D4432;
+}
+.to-ambio-warm {
+  --tw-gradient-to: #AD806B;
+}
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to));
+}
+
 
